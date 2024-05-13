@@ -131,8 +131,8 @@ class VIPER(nn.Module):
             raise NotImplementedError
 
         if self.use_std:
-            rewards_std = (rewards - self.stat[0]) / self.stat[1]
-        scaled_rewards = (1 - self.expl_scale) * rewards_std
+            rewards = (rewards - self.stat[0]) / self.stat[1]
+        scaled_rewards = (1 - self.expl_scale) * rewards
         return scaled_rewards
 
     def update(self, batch):

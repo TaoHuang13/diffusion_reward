@@ -1,0 +1,5 @@
+domain: dmc
+latent_size: 8
+epochs: 5000
+num_frames: 4
+dataset_path: /home/lucas/eccv/v-d4rl/vd4rl_data/reward

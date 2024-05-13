@@ -139,8 +139,8 @@ class DiffusionReward(nn.Module):
 
         rewards = self.calc_vlb(content_token, condition_token)
         if self.use_std:
-            rewards_std = (rewards - self.stat[0]) / self.stat[1]
-        scaled_rewards = (1 - self.expl_scale) * rewards_std
+            rewards = (rewards - self.stat[0]) / self.stat[1]
+        scaled_rewards = (1 - self.expl_scale) * rewards
         return scaled_rewards    
 
     @torch.no_grad()

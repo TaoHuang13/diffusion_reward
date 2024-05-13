@@ -102,8 +102,9 @@ class TrainVQGAN:
                 val_loss = self.eval(val_dataset, epoch*steps_per_epoch+i)
                 is_best = val_loss < best_loss
                 best_loss = min(best_loss, val_loss)
+
+                torch.save(self.vqgan.state_dict(), os.path.join(f"{self.work_dir}/checkpoints", f"vqgan.pt"))
                 if is_best:
-                    torch.save(self.vqgan.state_dict(), os.path.join(f"{self.work_dir}/checkpoints", f"vqgan.pt"))
                     print(f'Checkpoint at epoch {epoch} is saved with eval loss {best_loss} !!!')
 
     def eval(self, val_dataset, step):
